@@ -1,0 +1,37 @@
+
+<div class="container m-5 p-4">
+    <h1>Users</h1>
+    <input type="text" class="w-50 mb-5 "id="btn" [(ngModel)]="email">
+    <button class="btn btn-primary  m-3 text-light " (click)="getSearch(email)">search</button>
+    <br>
+    @if(clicked){
+        <button class="btn btn-primary  m-3 text-light " (click)="makeV()">reset</button>
+    }@else {
+        <button class="btn btn-primary  m-3 text-light " hidden (click)="makeV()">reset</button>
+    }
+    <div class="row justify-content-around">
+        @for (person of persons; track $index) {
+        <div class="col-3 m-4 p-3">
+            <div class="user p-4 ">
+                <img [src]="person.image" class="img-thumbnail rounded-circle mb-4">
+                <b class="m-3">{{person.username}}
+                    @if (person.is_verified) {
+                        <div class="imgD">
+                            <img src="./imgs/star.png" class="star">
+                        </div>
+                    }@else{
+                        <div class="imgD">
+                            <img src="./imgs/800px-Red_star.svg_.webp" class="star">
+                        </div>
+                    }
+                </b>
+                
+                <p class="m-3"><b>{{person.email}}</b></p>
+                <p class="m-3"><b>{{person.phone}}</b></p>
+            </div>
+        </div>
+    }
+    </div>
+</div>
+
+
